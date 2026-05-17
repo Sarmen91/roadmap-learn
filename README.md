@@ -13,7 +13,7 @@ The whole point of the scaffolding is that **the platform pushes back** so the r
 From the root of the repo where you want to learn:
 
 ```bash
-npx skills@latest add <your-handle>/<your-repo>
+npx skills@latest add Sarmen91/roadmap-learn
 ```
 
 (Substitute the GitHub handle/repo where you forked or copied this package.)
