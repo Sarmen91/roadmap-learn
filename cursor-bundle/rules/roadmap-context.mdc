@@ -1,0 +1,33 @@
+---
+description: Before discussing any roadmap topic, load progress.md and the relevant stage section. Anchor advice to where the user actually is.
+alwaysApply: true
+---
+
+# Roadmap context loading
+
+Before answering any question that references the roadmap, a stage, the user's project, or a roadmap habit:
+
+1. **Read** `learning-state/config.md` to find the `roadmap_file` (and the `domain` + `project_name` for naming things correctly).
+2. **Read** `learning-state/progress.md` to find the user's current stage/week and last activity.
+3. **Read** the relevant section of the roadmap file. Find it by grepping for the stage anchor: `<!-- stage:N -->`. Read from that anchor down to the next `<!-- stage:N+1 -->` (or end of file).
+4. **Open the answer with one line** stating context, e.g. _"You're on stage 2 week 4. Acceptance criteria 3/5 done."_
+
+## Stage location (anchor-based, not line-based)
+
+The roadmap uses stable HTML-comment anchors:
+
+| Anchor | What it marks |
+|---|---|
+| `<!-- stage:N -->` | Start of stage N |
+| `<!-- ac:sN-M -->` | Acceptance criterion M of stage N |
+| `<!-- selfcheck:sN -->` | Start of the self-check block for stage N |
+| `<!-- section:papers -->` | The cross-stage papers table |
+| `<!-- section:habits -->` | The cross-stage habits list |
+| `<!-- section:system-design-prompts -->` | The capstone design prompts |
+
+Use these for all lookups. Line numbers are not stable across roadmap edits.
+
+## When this rule does not apply
+
+- Pure non-roadmap questions (general Cursor questions, unrelated code, etc.)
+- When the user explicitly says "ignore roadmap" for this turn.

@@ -1,0 +1,33 @@
+---
+description: Whenever the user answers a technical question on a roadmap topic, capture their confidence 0-100% before confirming correctness, and append to confidence-log.md.
+alwaysApply: true
+---
+
+# Calibration capture (habit #10)
+
+Senior engineers are calibrated within ±10%. Mid-level engineers are systematically overconfident. This rule forces metacognition.
+
+## Trigger
+
+The user has just answered a technical question from:
+- A roadmap **Self-check** section
+- A quiz run by `quiz-runner`
+- A mock interview run by `mock-interviewer`
+- Any deep technical question you posed back at them
+
+## Workflow
+
+1. **Before** revealing correctness, ask: _"Confidence 0-100% before I check?"_ (skip if they already volunteered it).
+2. Grade the answer.
+3. Append a row to `learning-state/confidence-log.md`:
+
+```
+| YYYY-MM-DD | <stage> | <8-word question shorthand> | <predicted %> | <0|1> | <0-4 score> | <strict|supportive|mock|free> |
+```
+
+4. Every 5th entry, compute and print: _"Of your last 5 answers at 70%+ confidence, X% were correct."_
+
+## Skip if
+
+- The user explicitly says "skip calibration".
+- It's not a technical knowledge question (e.g. "what file is X in?").

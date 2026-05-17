@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "prompt",
+        "prompt": "Silently read learning-state/progress.md (only). In <=5 lines, greet me with: my current Stage and Week, my last activity date, and ONE concrete suggested next action (defer to the roadmap-navigator skill's logic). End with: 'Say \"what's next\" for a full plan, \"dashboard\" for full status, or just start working.' Do not invoke any other skills; this is orientation only.",
+        "timeout": 15
+      }
+    ],
+    "stop": [
+      {
+        "type": "prompt",
+        "prompt": "Check learning-state/journal.md for an entry dated today. If there is no entry for today AND this session had >5 tool calls (substantive work), append ONE line to your final response: '(tip: run `/log today` to journal this session)'. Otherwise add nothing. Do not invoke any skills.",
+        "timeout": 10
+      }
+    ]
+  }
+}
