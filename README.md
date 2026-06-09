@@ -1,6 +1,6 @@
 # roadmap-learn
 
-> A Cursor-native learning platform that turns any "I want to be senior at X" into a structured roadmap with stages, acceptance criteria, assessments, and habit loops — and pushes back when you'd rather skip the hard parts.
+> An agent-native learning platform that turns any "I want to be senior at X" into a structured roadmap with stages, acceptance criteria, assessments, and habit loops — and pushes back when you'd rather skip the hard parts.
 
 No backend, no SaaS. Just **18 agent skills**, **3 rules**, **2 session hooks/rituals**, and a `learning-state/` folder of markdown your agent reads and writes. Works in **Cursor, Claude Code, and Codex CLI**, on Windows / mac / Linux.
 
@@ -24,7 +24,7 @@ When the installer asks which skills to add, select **all of them** — or at mi
 
 ## First run
 
-After install, run these two commands in your Cursor agent, in order:
+After install, run these two commands in your agent (Cursor, Claude Code, or Codex CLI), in order:
 
 ### 1. `/start-roadmap`
 
