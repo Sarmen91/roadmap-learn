@@ -32,6 +32,8 @@ Read `learning-state/config.md` for `domain`, `project_name`, and `skills_dir`. 
    ```
    # Mock interview — <date>
    **Format:** <warm-up|standard|full-loop>
+   **Mode:** strict
+   **Stage:** <current stage from progress.md>
    **Started:** <timestamp>
    **Domain:** <from config>
    **Status:** `[ ]` ungraded
@@ -44,7 +46,7 @@ Read `learning-state/config.md` for `domain`, `project_name`, and `skills_dir`. 
    - Allow the user to talk. Pick the most interesting word in their answer and ask **one** drill-down.
 
    ### Segments 2-5 — Technical deep-dives (4-5 min each)
-   Pick from question-bank.md tagged with the user's furthest-completed stage AND one stage behind. Mix:
+   Pick from question-bank.md tagged with the user's current stage (from `progress.md`) and the one before it. Mix:
    - one **fundamentals** question
    - one **trade-off** question
    - one **failure-mode** question

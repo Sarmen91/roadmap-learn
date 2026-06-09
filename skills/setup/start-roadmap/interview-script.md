@@ -92,7 +92,7 @@ Options:
 
 ## Section H — Stage count
 
-> Explainer: Stages bundle weeks together by theme. Default: 8 stages for 12+ weeks, 4–6 stages for shorter timelines. Last 1–2 stages are usually polish / portfolio / capstone.
+> Explainer: Stages bundle weeks together by theme. Default: 8 stages for 12+ weeks or open-ended timelines, 4–6 stages for shorter ones. Last 1–2 stages are usually polish / portfolio / capstone.
 
 **Question H.1.** _"Propose <N> stages over <timeline_weeks> weeks (about <weeks_per_stage> weeks each). Adjust?"_
 

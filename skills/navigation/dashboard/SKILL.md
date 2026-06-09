@@ -10,13 +10,14 @@ Read-only one-shot status print. Does not write anything.
 ## Workflow
 
 Read these files in parallel:
-- `learning-state/config.md` (for `domain`, `project_name`, `stage_count`)
+- `learning-state/config.md` (for `domain`, `project_name`, `stage_count`, `roadmap_file`)
 - `learning-state/progress.md`
 - `learning-state/journal.md` (just the top entry)
 - `learning-state/confidence-log.md` (just the summary section)
 - `learning-state/papers.md`
-- `learning-state/flashcards/` (list files)
+- `learning-state/flashcards/*.md` (read contents — needed to count cards due today)
 - `learning-state/assessments/` (list files; read the most recent)
+- the current stage's section of the roadmap (anchor `<!-- stage:N -->`) — needed for the next-action line
 
 Then print **this exact layout** (substitute `<project_name>` from config — uppercase, used as the header banner):
 

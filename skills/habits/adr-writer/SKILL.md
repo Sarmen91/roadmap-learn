@@ -26,8 +26,8 @@ Habit #3 from the roadmap. ADRs are what senior interviewers ask to see. This sk
 
    Number `NNNN` is the next 4-digit zero-padded index from existing files in `docs/adr/`.
 
-4. **After writing, update `progress.md`:** add the ADR path under the current stage's `## Deliverables` block:
-   - `- [x] ADR: docs/adr/<NNNN>-<slug>.md`
+4. **After writing, update `progress.md`:** mark the current stage's ADR deliverable line `[x]` and append the path inline:
+   - `- [x] ADR(s): >=1 in docs/adr/ — docs/adr/<NNNN>-<slug>.md`
 
 5. **End with one offer:** _"Want me to quiz you on this decision in 7 days to test if it holds up? (writes a deferred flashcard at depth-4.)"_
 

@@ -7,7 +7,7 @@ description: Runs an interactive self-check quiz drawn verbatim from a roadmap s
 
 Runs a focused assessment. **Does not grade** — that's `quiz-grader`. This skill's job is clean delivery and clean capture.
 
-## Modes (the user can specify; default = `mixed`)
+## Flags (mode defaults to `mode:` in `learning-state/config.md`; type defaults to `mixed` = quick-checks + 1 trade-off)
 
 | Flag | Effect |
 |---|---|
@@ -30,7 +30,7 @@ If `--mode` is unset, fall back to `mode:` from `learning-state/config.md`.
 
 3. **Create the assessment file** before starting:
 
-   Path: `learning-state/assessments/stage-<N>-<YYYY-MM-DD>-<mode>.md`
+   Path: `learning-state/assessments/stage-<N>-<YYYY-MM-DD-HHMM>-<mode>.md` (the time component prevents same-day re-takes from colliding)
 
    ```
    # Stage <N> self-check — <YYYY-MM-DD>

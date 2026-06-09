@@ -6,7 +6,7 @@ Seeded from the roadmap's `Required reading` and `Build` sections by `bootstrap-
 
 ## Targets by stage
 
-<!-- Repeat per stage. bootstrap-state generates 1-2 targets per stage. -->
+<!-- Repeat per stage. bootstrap-state generates 2-4 targets per stage. -->
 
 | Stage | Library function | Why it's worth reading |
 |---|---|---|

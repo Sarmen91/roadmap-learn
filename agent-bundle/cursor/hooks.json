@@ -11,7 +11,7 @@
     "stop": [
       {
         "type": "prompt",
-        "prompt": "Check learning-state/journal.md for an entry dated today. If there is no entry for today AND this session had >5 tool calls (substantive work), append ONE line to your final response: '(tip: run `/log today` to journal this session)'. Otherwise add nothing. Do not invoke any skills.",
+        "prompt": "Check learning-state/journal.md for an entry dated today. If there is no entry for today AND this session had >5 tool calls (substantive work), send one follow-up message containing only: '(tip: run `/log today` to journal this session)'. Otherwise do nothing. Do not invoke any skills.",
         "timeout": 10
       }
     ]

@@ -9,7 +9,7 @@ Scores assessment files written by `quiz-runner` (and `mock-interviewer`).
 
 ## Workflow
 
-1. **Find the target file.** Default = most recently modified file under `learning-state/assessments/`. The user can override by naming a file or stage+date.
+1. **Find the target file.** Default = most recently modified file under `learning-state/assessments/` (quiz `stage-*.md` or mock `mock-*.md`). The user can override by naming a file or stage+date.
 
 2. **Read** the file. Confirm `Status: [ ] ungraded` (or `abandoned`). If already graded, ask before re-grading.
 
@@ -38,7 +38,7 @@ Scores assessment files written by `quiz-runner` (and `mock-interviewer`).
    - Strength: <one sentence>
    ```
 
-7. **Update** `learning-state/progress.md` → `Latest scores` table:
+7. **Update** `learning-state/progress.md` → `Latest scores` table (use `mock` in the stage column for mock interviews):
    ```
    | <stage> | <YYYY-MM-DD> | <mode> | <avg>/4 | <one-line verdict> |
    ```
@@ -49,15 +49,22 @@ Scores assessment files written by `quiz-runner` (and `mock-interviewer`).
    ```
 
 9. **Seed flashcards** for every question with score < 3:
-   - Hand off to `flashcard-maker` with the question + reference answer + the gap.
-   - Or, if `flashcard-maker` isn't being called, append to `learning-state/flashcards/stage-<N>.md` directly using the format in that skill.
+   - Hand off to `flashcard-maker` with the question + reference answer + the gap (it owns the card format and IDs).
 
-10. **Calibration check** every 5+ entries: print _"Of your last 5 high-confidence answers (>=70%), X were correct (>= 2/4)."_
+10. **Calibration check** every 5+ entries: print _"Of your last 5 high-confidence answers (>=70%), X were correct (>= 2/4)."_ and prepend the same line to the `## Summary` section of `learning-state/confidence-log.md` (most recent on top — `dashboard` and `weekly-review` read it from there).
 
 11. **End with one next-step prompt.** Examples:
     - If average >= 3.0: _"Strong. Run `stage-gate <N>` if acceptance criteria are also complete."_
     - If average 2.0-2.9: _"Mid-level pass. Top gap: <X>. Review with `concept-explainer <topic>` then re-quiz in 3 days."_
     - If average < 2.0: _"Below bar. Don't move stage. Run `feynman-coach` on the bottom-scoring concept."_
+
+## Mock interviews (`mock-*.md` files)
+
+Files written by `mock-interviewer` differ from quizzes in three ways:
+
+- Mode is always **strict** (the file header says so; no fallback needed).
+- Score each **segment's** Q+A on the same 0-4 rubric (a segment = the question plus its follow-up).
+- The verdict line is one of: `Senior · Senior-leaning · Mid · Below mid`, followed by **three concrete follow-up actions**. Use `mock` in the Latest-scores stage column.
 
 ## Strict-mode voice (sample)
 

@@ -14,7 +14,7 @@ This is a **prompt-driven** skill, not a script. Explore, ask one decision at a 
 
 Refuse to write any file until **all** of these are true:
 
-1. Web grounding ran (at least one `WebSearch` call returned, captured in your working buffer).
+1. Web grounding ran (the three mandatory searches from [domain-research.md](domain-research.md) returned, captured in your working buffer).
 2. The user answered: domain, timeline, weekly-hours, current-level, goal-artifact.
 3. The user explicitly said "ship it" / "looks good" / equivalent on the roadmap draft.
 4. If `learning-state/config.md` already exists, the user explicitly confirmed overwrite.
@@ -54,7 +54,7 @@ Tell the user (one line): _"Grounded the draft with N web sources from the last 
 
 ### 4. Section C — Follow-ups
 
-Continue through [interview-script.md](interview-script.md) Sections C through G. After this you should have:
+Continue through [interview-script.md](interview-script.md) Sections C through H. After this you should have:
 
 - `timeline_weeks` (e.g. 16, 8, "open-ended")
 - `weekly_hours` (e.g. "8–10")
@@ -63,7 +63,7 @@ Continue through [interview-script.md](interview-script.md) Sections C through G
 - `project_name` (the working title for the project they'll build through the roadmap — can be `<domain-slug>-project` if none chosen)
 - `output_preferences` (blog posts? talks? ADRs only?)
 - `assessment_preferences` (mock interviews + self-quizzes? quizzes only? Feynman-heavy?)
-- `stage_count` (default 8 if 12+ weeks, 4–6 if shorter — propose and confirm)
+- `stage_count` (default 8 if 12+ weeks or open-ended, 4–6 if shorter — propose and confirm)
 
 ### 5. Draft the roadmap
 
@@ -89,7 +89,7 @@ at the **repo root**. The roadmap MUST:
   ```
 - Per stage: `**Deliverables**` block (blog post, self-check section, ADR slot).
 - Per stage: a `## Self-check` block with quick-checks and trade-off questions tagged `<!-- selfcheck:sN -->`.
-- A `## Papers` section tagged `<!-- section:papers -->` with a `stage_count`-row table.
+- A `## Papers` section tagged `<!-- section:papers -->` with one row per 2 weeks (`timeline_weeks / 2`, rounded down; one row per stage if the timeline is open-ended).
 - A `## Habits` section tagged `<!-- section:habits -->` listing the 10 cross-stage habits.
 - A `## System design prompts` section tagged `<!-- section:system-design-prompts -->` with 3–5 capstone design prompts.
 - All web-search citations inline as footnote-style links.
@@ -154,7 +154,7 @@ Next step: review the roadmap once more, then run `/bootstrap-state` to scaffold
 - **Each question has a short explainer** (2 lines, the why) before the choices.
 - **No marketing language** in the roadmap. "Robust", "powerful", "scalable" → cut.
 - **Cite sources inline** for any current-stack claim. Make the user able to audit you.
-- **Never let stages drift past the timeline.** Sum of stage weeks must equal `timeline_weeks`.
+- **Never let stages drift past the timeline.** Sum of stage weeks must equal `timeline_weeks`. (For open-ended timelines, still give every stage an explicit week range and state the running total.)
 - **Acceptance criteria are testable.** "App deployed at public URL" — passes. "Better at deploys" — fails.
 
 ## See also

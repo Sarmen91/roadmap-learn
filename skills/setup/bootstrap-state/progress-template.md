@@ -33,7 +33,8 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` evidence neede
 
 **Deliverables**
 - [ ] Blog post: _"{{blog_title}}"_
-- [ ] Self-check answers in `docs/notes/wk-{{week_end}}.md`
+- [ ] ADR(s): >=1 in `docs/adr/`
+- [ ] Self-check answers in `learning-state/notes/wk-{{week_end}}.md`
 - [ ] Quick-check questions added to flashcards
 
 ## Cross-stage habits

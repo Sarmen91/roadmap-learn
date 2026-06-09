@@ -16,7 +16,8 @@ import { join } from "node:path";
 const agent = (process.argv.find((a) => a.startsWith("--agent=")) ?? "--agent=cursor").split("=")[1];
 
 // Consume stdin (hook event JSON); contents are not needed.
-try { readFileSync(0, "utf8"); } catch { /* no stdin (e.g. manual run) */ }
+// Skip when attached to a TTY (manual run) — reading fd 0 would block forever there.
+try { if (!process.stdin.isTTY) readFileSync(0, "utf8"); } catch { /* no stdin */ }
 
 function emit(context) {
   if (agent === "claude") {
@@ -36,19 +37,19 @@ try {
   emit("No learning-state/progress.md found yet. Run the start-roadmap skill to bootstrap.");
 }
 
-// Extract the "Current state" block (between '## Current state' and the next '## ')
-const m = content.match(/## Current state\s*\r?\n([\s\S]*?)(?=^## )/m);
+// Extract the "Current state" block (between '## Current state' and the next '## ' or end of file)
+const m = content.match(/## Current state\s*\r?\n([\s\S]*?)(?=\r?\n## |$)/);
 const currentState = m ? m[1].trim() : "(could not parse Current state block from progress.md)";
 
-// Count checked vs total acceptance criteria across the file (rough but useful)
-const checked = (content.match(/- \[x\]/g) ?? []).length;
-const total = (content.match(/- \[[ x!~]\]/g) ?? []).length;
+// Count only acceptance criteria (lines carrying an ac:sN-M anchor) — not deliverables or habits
+const checked = (content.match(/<!-- ac:s\d+-\d+ -->\s*- \[[xX]\]/g) ?? []).length;
+const total = (content.match(/<!-- ac:s\d+-\d+ -->\s*- \[[ xX!~]\]/g) ?? []).length;
 const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
 
 emit(`## Roadmap session-start context
 
 ${currentState}
 
-**Overall progress:** ${checked} / ${total} checked (${pct}%).
+**Acceptance criteria:** ${checked} / ${total} checked (${pct}%).
 
 Tell the user: 'Use "what's next" for navigator, "dashboard" for full status, or just start working.'`);

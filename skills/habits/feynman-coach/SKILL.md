@@ -48,9 +48,11 @@ Habit #2 from the roadmap. The fastest way to find out *you don't actually under
 
    ```
    ### Feynman pass — <topic>
-   Audience: <X> · Duration: <Y> min · Verdict: <Z>
+   Stage: <N, from progress.md> · Audience: <X> · Duration: <Y> min · Verdict: <Z>
    Fumble points: <comma list>
    ```
+
+   (The `Stage:` line is what `stage-gate` greps to credit habit #2 — don't omit it.)
 
 7. **Seed flashcards** for each fumble point. Hand off to `flashcard-maker` with question = "Explain <fumble point> without jargon".
 

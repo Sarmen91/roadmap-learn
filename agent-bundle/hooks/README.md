@@ -7,7 +7,7 @@ Per-agent hook wiring is described in [../README.md](../README.md) (install matr
 | Event | Type | What it does |
 |---|---|---|
 | `sessionStart` | `prompt` | Reads `progress.md` and gives you a 5-line orientation when a chat opens |
-| `stop` | `prompt` | If you didn't journal today and did substantive work, suggests `/log today` |
+| `stop` | `prompt` | If you didn't journal today and did substantive work, sends a one-line `/log today` nudge as a follow-up message (stop hooks fire after the response, so the nudge can't be appended to it) |
 
 Prompt-type hooks don't spawn a process, so they're portable across Windows / mac / Linux and never break because something isn't on `PATH`. They cost one extra LLM call per fire (~10-15 sec); the deterministic alternative is `load-progress.mjs` (below).
 
@@ -30,6 +30,7 @@ Replace the `sessionStart` block in `.cursor/hooks.json` with:
   "hooks": {
     "sessionStart": [
       {
+        "type": "command",
         "command": "node .cursor/hooks/load-progress.mjs --agent=cursor",
         "timeout": 5
       }
@@ -50,7 +51,7 @@ No hook wiring: Codex hooks are experimental and their output is not injected in
 
 ## Adding more hooks (Cursor)
 
-See `~/.cursor/skills-cursor/create-hook/SKILL.md` for the full event catalog and output schemas. Good candidates for this project:
+See Cursor's hooks documentation (https://cursor.com/docs/agent/hooks) for the full event catalog and output schemas. Good candidates for this project:
 
 - `afterFileEdit` matched on `learning-state/progress.md` → automatically `git diff` and require a journal entry.
 - `beforeShellExecution` matched on `git commit` → enforce that any commit references a roadmap stage/section.

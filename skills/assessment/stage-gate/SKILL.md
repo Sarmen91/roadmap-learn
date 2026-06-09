@@ -13,7 +13,7 @@ A stage is **done** only when ALL of these are true:
 
 1. **Every acceptance criterion** in the stage's roadmap section is checked `[x]` in `progress.md` with **inline evidence**.
 2. **Blog post** drafted (file path or URL recorded).
-3. **Self-check quiz** completed with average score >= 2.5 in **at least one** graded run.
+3. **Self-check quiz**: the **most recent** graded run for this stage scores >= 2.5 average. The latest run counts, not the best — a newer, lower-scored run reopens the gate.
 4. **>=1 ADR** exists (in `docs/adr/` — file path recorded).
 5. **Feynman pass** recorded (habit #2 — a brief note in journal or a recording link).
 6. The required external reproduction (habit #6) is logged for this stage.
@@ -44,10 +44,10 @@ The user can `--skip` items 4-6 with a written reason ("ADR-skip: reason"), but 
 
 6. **Check derived requirements:**
    - Blog post: search the repo for a `docs/blog/<stage>-*.md` OR ask for a URL.
-   - Self-check: read `learning-state/assessments/stage-<N>-*.md` files; require at least one with score >= 2.5.
+   - Self-check: read `learning-state/assessments/stage-<N>-*.md` files; require the **most recently graded** run to score >= 2.5.
    - ADR: search `docs/adr/` for >=1 file referencing this stage's choice.
-   - Feynman pass: grep `journal.md` for `feynman` mentions for this stage.
-   - Reproduction: grep `journal.md` for "reproduced" mentions for this stage.
+   - Feynman pass: grep `journal.md` for `Feynman pass` entries whose `Stage:` line matches this stage.
+   - Reproduction: grep `journal.md` for "reproduced" mentions; if an entry doesn't name the stage, confirm with the user which stage it belongs to.
 
 7. **Verdict.** Print one of:
 
@@ -76,7 +76,7 @@ Stage <N> — BLOCKED. 3 hard gates missing:
   [ ] Blog post: "<title from roadmap>"
       → Run `blog-post-coach <N>` to scaffold the draft.
 
-  [ ] Self-check quiz never run (need average >= 2.5)
+  [ ] Self-check quiz never run (latest graded run must average >= 2.5)
       → Run `quiz-runner stage <N> --mode=strict`.
 
 Soft gates: 1 ADR exists, Feynman not logged, reproduction not logged.

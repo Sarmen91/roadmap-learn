@@ -27,7 +27,7 @@ agent-bundle/
 Why the differences:
 
 - **Cursor** supports prompt-type hooks — portable, no process spawned, no runtime dependency.
-- **Claude Code** `SessionStart` hooks only support `command` type, so it runs the Node script (`--agent=claude` switches the output JSON shape). Its `Stop` prompt hooks are allow/block decisions, not response addenda — so the journal nudge lives in `CLAUDE.md` instead.
+- **Claude Code** `SessionStart` hooks only support `command` type, so it runs the Node script (`--agent=claude` switches the output JSON shape). Its `Stop` hooks are allow/block decisions that can't surface a message to the user, so the journal nudge lives in `CLAUDE.md` instead. (Cursor's `stop` hook can't append to the just-finished response either — stop hooks fire after it — but it can send the nudge as a one-line follow-up message, which is why the hook still carries it on Cursor.)
 - **Codex CLI** hooks are experimental (feature-flagged) and their output is not injected into model context — so both rituals are plain instructions in `AGENTS.md`.
 
 The managed blocks in `CLAUDE.md` / `AGENTS.md` are delimited with `<!-- roadmap-learn:start -->` / `<!-- roadmap-learn:end -->` markers so re-installs replace the block without touching your own content.

@@ -12,7 +12,7 @@ stage_count: {{stage_count}}
 timeline_weeks: {{timeline_weeks}}
 weekly_hours: {{weekly_hours}}
 started: {{YYYY-MM-DD}}
-mode: {{strict | supportive | mixed}}
+mode: {{strict | supportive}}
 skills_dir: {{.cursor/skills | .claude/skills | .agents/skills}}
 
 ## Notes

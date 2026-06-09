@@ -5,7 +5,7 @@ description: Turns missed quiz questions, Feynman fumble points, or arbitrary us
 
 # Flashcard maker
 
-Single writer to `learning-state/flashcards/stage-<N>.md`. Lightweight SM-2 spaced repetition, all in markdown.
+Owns card **creation** in `learning-state/flashcards/stage-<N>.md` (`flashcard-reviewer` owns the scheduling fields: ease / interval / due / reps). Lightweight SM-2 spaced repetition, all in markdown.
 
 ## Card format (one card = one row)
 

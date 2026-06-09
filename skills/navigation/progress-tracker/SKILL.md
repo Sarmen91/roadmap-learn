@@ -5,7 +5,7 @@ description: Updates learning-state/progress.md and journal.md when the user log
 
 # Progress tracker
 
-Owns writes to `learning-state/progress.md`, `journal.md`, and `changed-mind.md`. **Single writer** of these files — other skills propose changes through this one when they need to update state.
+Primary owner of `learning-state/progress.md`, `journal.md`, and `changed-mind.md`. A few skills write narrow, documented sections directly (`stage-gate`: stage status lines; `quiz-grader`: Latest scores; `adr-writer` / `blog-post-coach`: their deliverable lines; `weekly-review` / `feynman-coach` / `source-code-reader`: journal entries) — everything else routes through this skill.
 
 ## Routing
 
@@ -47,7 +47,7 @@ When checking off, **find the row by its `<!-- ac:sN-M -->` anchor**, change `[ 
 
 ## Stage/week transition workflow
 
-1. Confirm previous stage's blog post + self-check + ADR are done (block if not — defer to `stage-gate`).
+1. Confirm the previous stage passed `stage-gate` (its hard gates: AC evidence, blog post, self-check quiz). Block the transition if it hasn't been gated.
 2. Update `Current state` block in `progress.md` (Stage, Week, project version target from the roadmap's `<!-- stage:N project=... -->` anchor metadata).
 3. If transitioning to a new stage, the new stage's acceptance criteria should already exist in `progress.md` (written by `bootstrap-state`). If they don't, re-run `/bootstrap-state` rather than copying by hand.
 

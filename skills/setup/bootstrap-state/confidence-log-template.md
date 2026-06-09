@@ -5,7 +5,7 @@
 
 ## Format
 
-One row per technical question asked of you. Predicted = your confidence before grading; correct = 1 if score ≥ 2, else 0.
+One row per technical question asked of you. Predicted = your confidence, captured **before you answer**; correct = 1 if score ≥ 2, else 0.
 
 | Date | Stage | Question shorthand | Predicted % | Correct (0/1) | Score (0-4) | Mode |
 |---|---|---|---|---|---|---|
@@ -13,6 +13,6 @@ One row per technical question asked of you. Predicted = your confidence before 
 
 ## Summary
 
-_(Computed every 5 entries by `quiz-grader`. Most recent on top.)_
+_(Updated every 5 entries by `quiz-grader` and the `calibration` rule. Most recent on top.)_
 
 - _no entries yet_

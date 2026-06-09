@@ -1,6 +1,6 @@
 # Mock interview question bank
 
-Seeded from the roadmap's acceptance criteria + self-check sections + the domain-research web grounding. Tag format: `[stage] [type]`. Pull questions whose stage tag ≤ user's current stage.
+Seeded from the roadmap's acceptance criteria + self-check sections + the domain-research web grounding. Tag format: `[stage][type]`. Pull questions whose stage tag ≤ the user's current stage (`mock-interviewer` focuses on the current stage and the one before it).
 
 ## Types
 
@@ -28,7 +28,7 @@ Seeded from the roadmap's acceptance criteria + self-check sections + the domain
 Use the design prompts from the roadmap (`<!-- section:system-design-prompts -->`):
 <!-- bootstrap-state inserts the 3-5 prompts here verbatim -->
 
-For each, the user should defend: tool / model choice, data + state plan, eval / observability story, security model, cost at scale, day-1 failure mode.
+For each, the user should defend: core tool / architecture choice, data + state plan, observability / evaluation story, security model, cost at scale, day-1 failure mode.
 
 ## Always-fair behavioral prompts
 

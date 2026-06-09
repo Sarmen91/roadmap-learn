@@ -16,7 +16,7 @@ Refuse to run if:
 
 1. `learning-state/config.md` does not exist. Tell the user: _"Run `/start-roadmap` first."_
 2. The roadmap file named in `config.md` does not exist or has fewer than 1 valid `<!-- stage:N -->` anchor. Tell the user the parse failed and show what was found.
-3. Stage anchor count does not match `stage_count` in config. Refuse and surface the mismatch.
+3. Stage anchor count does not match `stage_count` in config. Surface the mismatch and ask: if the user intentionally added/removed a stage in the roadmap, update `stage_count` in `config.md` to match the roadmap and continue; otherwise stop so they can fix the roadmap anchors.
 
 ## Process
 
@@ -106,7 +106,7 @@ If the target file already exists, ask the user before overwriting: _"Question b
 
 #### `<skills_dir>/source-code-reader/targets.md`
 
-Use [source-targets-template.md](source-targets-template.md). For each parsed stage, LLM-generate 1–2 library-function targets drawn from:
+Use [source-targets-template.md](source-targets-template.md). For each parsed stage, LLM-generate 2–4 library-function targets (habit #4 calls for 3–4 reads per stage; the seed list is a starting point the user extends) drawn from:
 
 - Tools / frameworks named in the stage's `Required reading` and `Build` sections.
 - Domain-research findings.

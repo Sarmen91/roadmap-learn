@@ -7,14 +7,14 @@ This folder is the **single source of truth** for where you are on the [{{domain
 | File | Purpose | Written by |
 |---|---|---|
 | `config.md` | Domain + roadmap pointer + grading mode | `start-roadmap` (you, via the skill) |
-| `progress.md` | Current stage, week, completed acceptance criteria, latest scores | `progress-tracker`, `stage-gate`, `quiz-grader` |
-| `journal.md` | Append-only daily learning log | `progress-tracker` (you, via the skill) |
+| `progress.md` | Current stage, week, completed acceptance criteria, latest scores | `progress-tracker`, `stage-gate`, `quiz-grader`, `adr-writer`, `blog-post-coach` |
+| `journal.md` | Append-only daily learning log | `progress-tracker`, `weekly-review`, `feynman-coach`, `source-code-reader` (you, via the skills) |
 | `changed-mind.md` | Habit #9: every time the roadmap proved an assumption wrong | `progress-tracker` |
 | `confidence-log.md` | Habit #10: confidence calibration record (predicted % vs actual correct) | `calibration` rule + `quiz-grader` |
 | `papers.md` | The papers + which 3-pass stage you're on for each | `paper-tracker` |
 | `assessments/` | One file per quiz/mock-interview run: questions, answers, scores, feedback | `quiz-runner`, `quiz-grader`, `mock-interviewer` |
 | `flashcards/` | Per-stage flashcard decks with SM-2 due dates | `flashcard-maker`, `flashcard-reviewer` |
-| `notes/` | `wk-XX.md` notes (matches the roadmap's required output) | you, scaffolded by `progress-tracker` |
+| `notes/` | `wk-XX.md` notes (matches the roadmap's required output) | you |
 
 ## Daily / weekly rhythm
 

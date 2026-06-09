@@ -1,6 +1,6 @@
 # Journal
 
-> Append-only daily log. Prepend new entries above the divider. Use the template below.
+> Append-only daily log. Add new entries below the divider, newest on top. Use the template below.
 > The `progress-tracker` skill writes here; you can also write by hand.
 
 ## Entry template

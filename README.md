@@ -46,7 +46,7 @@ The state generator. Reads your approved roadmap and writes:
 - `learning-state/papers.md` from the roadmap's papers table.
 - `learning-state/journal.md`, `changed-mind.md`, `confidence-log.md`, plus `flashcards/`, `assessments/`, `notes/` directories.
 - `<skills_dir>/mock-interviewer/question-bank.md` — LLM-generated from your roadmap + web grounding (you'll want to hand-edit this before your first mock). `skills_dir` lives in `config.md` and points at your agent's skills folder.
-- `<skills_dir>/source-code-reader/targets.md` — 1-2 library functions per stage to read.
+- `<skills_dir>/source-code-reader/targets.md` — 2-4 library functions per stage to read (a seed list; extend it with whatever you're actually fighting).
 
 Idempotent — re-run safely after editing the roadmap; user state (checkmarks, journal entries) is preserved by matching `<!-- ac:sN-M -->` anchors.
 
@@ -88,11 +88,11 @@ Skills auto-trigger from natural phrasing — no `/slash` required (but slashes 
 
 ## Daily / weekly / per-stage rhythm
 
-**Daily** (~30 min, plus your project work):
+**Daily** (~15 min of scaffolding around your project block):
 1. 1 min: `dashboard` to orient
-2. 25 min: work on your project (the agent pushes back Socratically)
+2. 25+ min: work on your project (the agent pushes back Socratically)
 3. 2 min: `log today`
-4. 5 min: `review my flashcards`
+4. 10 min: `review my flashcards`
 
 **Weekly** (Friday, ~15 min):
 - `weekly review` ritual
@@ -112,7 +112,7 @@ Skills auto-trigger from natural phrasing — no `/slash` required (but slashes 
 
 1. Every roadmap acceptance criterion checked with inline evidence (commit / PR / URL / file).
 2. Blog post drafted.
-3. Self-check quiz scored ≥ 2.5 average in at least one graded run.
+3. The **latest** graded self-check quiz run scored ≥ 2.5 average (the most recent run counts, not your best).
 
 Soft gates (skippable with reason): ADR, Feynman pass, external reproduction.
 
@@ -120,7 +120,7 @@ Soft gates (skippable with reason): ADR, Feynman pass, external reproduction.
 
 ## Grading modes
 
-Every quiz/assessment supports `--mode=strict` or `--mode=supportive`. The default lives in `learning-state/config.md` (initially set during `/start-roadmap`). See `<skills_dir>/quiz-runner/rubric.md` for the 0-4 rubric.
+Quizzes support `--mode=strict` or `--mode=supportive` (mock interviews are always strict). The default lives in `learning-state/config.md` (initially set during `/start-roadmap`). See `<skills_dir>/quiz-runner/rubric.md` for the 0-4 rubric.
 
 - **Strict** = senior interviewer voice. A "textbook correct" answer is **2/4**. 3/4 requires trade-off articulation. 4/4 requires a failure mode named unprompted. Use for real assessment.
 - **Supportive** = tutor voice. 3/4 for correct, 4/4 for depth. Use for early learning of a topic.
@@ -137,7 +137,7 @@ domain: <your domain name>
 project_name: <your project>
 stage_count: <N>
 timeline_weeks: <N>
-mode: <strict | supportive | mixed>
+mode: <strict | supportive>
 skills_dir: <.cursor/skills | .claude/skills | .agents/skills>
 ```
 
@@ -179,8 +179,8 @@ Edit the roadmap freely; re-run `/bootstrap-state` to propagate structural chang
 
 ## Files skills own (don't hand-edit; let the skill update them)
 
-- `learning-state/progress.md` ← `progress-tracker` · `stage-gate` · `quiz-grader`
-- `learning-state/journal.md` ← `progress-tracker` · `weekly-review`
+- `learning-state/progress.md` ← `progress-tracker` · `stage-gate` · `quiz-grader` · `adr-writer` · `blog-post-coach`
+- `learning-state/journal.md` ← `progress-tracker` · `weekly-review` · `feynman-coach` · `source-code-reader`
 - `learning-state/confidence-log.md` ← `calibration` rule · `quiz-grader`
 - `learning-state/flashcards/stage-*.md` ← `flashcard-maker` · `flashcard-reviewer`
 - `learning-state/assessments/*.md` ← `quiz-runner` · `quiz-grader` · `mock-interviewer`

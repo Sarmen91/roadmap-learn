@@ -6,7 +6,7 @@ Habit #5: one paper every 2 weeks. Use Keshav's three-pass method.
 - **Pass 2 — Read** (1 hour): read for understanding, skip proofs/details. Take notes.
 - **Pass 3 — Reproduce** (2 hours, optional): reproduce one key idea in code or a worked example.
 
-For each paper write a 200-word summary in `docs/papers/<slug>.md`.
+For each paper write a 200-word summary in `docs/papers/<NN>-<slug>.md`.
 
 ## Reading list (from `{{roadmap_file}}` → `<!-- section:papers -->`)
 

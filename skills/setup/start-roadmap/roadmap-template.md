@@ -15,7 +15,7 @@ Canonical structure for the file `start-roadmap` writes. Every downstream skill 
 - **Goal artifact:** <goal_artifact>
 - **Timeline:** <timeline_weeks> weeks at ~<weekly_hours> hours/week
 - **Project name:** <project_name>
-- **Default grading mode:** <strict | supportive | mixed>
+- **Default grading mode:** <strict | supportive>
 
 ## How to use this roadmap
 
@@ -53,11 +53,11 @@ If you want to add or reorder, run `/bootstrap-state` again — it will reconcil
 <!-- ac:sN-3 --> - [ ] <criterion>
 <!-- ac:sN-4 --> - [ ] <criterion>
 <!-- ac:sN-5 --> - [ ] <criterion>
-<!-- ac:sN-6 --> - [ ] >=1 ADR in `docs/adr/`
 
 **Deliverables**
 - [ ] Blog post: _"<title from output_preferences>"_
-- [ ] Self-check answers in `docs/notes/wk-<W>.md`
+- [ ] ADR(s): >=1 in `docs/adr/`
+- [ ] Self-check answers in `learning-state/notes/wk-<W>.md`
 - [ ] Quick-check questions added to flashcards
 
 <!-- selfcheck:sN -->
@@ -97,7 +97,7 @@ One paper every 2 weeks. Keshav's three-pass method (Scan / Read / Reproduce).
 | 2 | Weeks 3-4 | <title> | <one line> | <link> |
 | ... | ... | ... | ... | ... |
 
-(One row per `timeline_weeks / 2`, rounded down.)
+(One row per 2 weeks: `timeline_weeks / 2`, rounded down. If the timeline is open-ended, one row per stage.)
 ```
 
 ### Habits
@@ -132,7 +132,7 @@ For the final stage / mock interviews. Pick one to defend end-to-end.
 4. <Design prompt>
 5. <Design prompt>
 
-For each: defend model / tool / framework choice, data + state plan, eval / observability story, security / multi-tenancy model, cost-at-scale, day-1 failure mode.
+For each: defend the core tool / architecture choice, data + state plan, observability / evaluation story, security model, cost-at-scale, day-1 failure mode. (Adapt the axes to the domain.)
 ```
 
 ### References
