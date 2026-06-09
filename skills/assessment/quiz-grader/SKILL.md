@@ -13,7 +13,7 @@ Scores assessment files written by `quiz-runner` (and `mock-interviewer`).
 
 2. **Read** the file. Confirm `Status: [ ] ungraded` (or `abandoned`). If already graded, ask before re-grading.
 
-3. **Read** the rubric: `.cursor/skills/quiz-runner/rubric.md`.
+3. **Read** the rubric: `<skills_dir>/quiz-runner/rubric.md` (resolve `skills_dir` from `learning-state/config.md`).
 
 4. **Determine grading mode** — file header has `**Mode:**`. The user can override at invocation: _"grade in strict mode"_ takes precedence. If not set anywhere, fall back to `mode:` from `learning-state/config.md`.
 

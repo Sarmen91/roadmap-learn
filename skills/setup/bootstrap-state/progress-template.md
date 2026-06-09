@@ -41,7 +41,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` done · `[!]` evidence neede
 - [ ] **#1 Spaced repetition** — flashcards (10 min/day)
 - [ ] **#2 Feynman pass** — recorded per stage
 - [ ] **#3 ADRs** — at least one per stage in `docs/adr/`
-- [ ] **#4 Source reading** — 3-4 functions per stage (see `.cursor/skills/source-code-reader/targets.md`)
+- [ ] **#4 Source reading** — 3-4 functions per stage (see `{{skills_dir}}/source-code-reader/targets.md`)
 - [ ] **#5 Papers** — see `papers.md`
 - [ ] **#6 Reproduce external post** — one per stage
 - [ ] **#7 Open-source PR** — at least one over {{timeline_weeks}} weeks

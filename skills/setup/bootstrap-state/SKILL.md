@@ -22,7 +22,7 @@ Refuse to run if:
 
 ### 1. Load and validate
 
-1. Read `learning-state/config.md`. Parse `key: value` lines. Capture: `roadmap_file`, `domain`, `domain_slug`, `project_name`, `stage_count`, `timeline_weeks`, `started`, `mode`.
+1. Read `learning-state/config.md`. Parse `key: value` lines. Capture: `roadmap_file`, `domain`, `domain_slug`, `project_name`, `stage_count`, `timeline_weeks`, `started`, `mode`, `skills_dir`. If `skills_dir` is missing (config predates it), detect the host agent's skills folder (`.cursor/skills`, `.claude/skills`, or `.agents/skills` — whichever exists) and append the key to config.md.
 2. Read the roadmap file at `roadmap_file` (repo root).
 3. Validate anchors:
    - Count `<!-- stage:N -->` matches → should equal `stage_count`.
@@ -52,7 +52,7 @@ For each target file:
 #### `learning-state/progress.md`
 
 Use [progress-template.md](progress-template.md). Substitute:
-- `{{domain}}`, `{{project_name}}`, `{{stage_count}}`, `{{timeline_weeks}}` from config.
+- `{{domain}}`, `{{project_name}}`, `{{stage_count}}`, `{{timeline_weeks}}`, `{{skills_dir}}` from config.
 - One stage section per parsed stage, with all `acceptance_criteria` as `<!-- ac:sN-M --> - [ ] <text>` lines.
 
 **Merge rule**: if a stage section already exists in the user's progress.md, preserve any `[x]` or `[!]` boxes (matched by `ac:sN-M` anchor) and only add new criteria or fix the wording of existing ones. Print a summary: _"Preserved N user checkmarks. Added M new criteria. Updated K criterion texts."_
@@ -75,7 +75,7 @@ Use [confidence-log-template.md](confidence-log-template.md). If exists, do not 
 
 #### `learning-state/README.md`
 
-Use [learning-state-readme-template.md](learning-state-readme-template.md). Substitute `{{domain}}` and `{{roadmap_file}}`. Overwrite if exists (it's structural).
+Use [learning-state-readme-template.md](learning-state-readme-template.md). Substitute `{{domain}}`, `{{roadmap_file}}`, and `{{skills_dir}}`. Overwrite if exists (it's structural).
 
 #### Directories with READMEs
 
@@ -86,7 +86,9 @@ Ensure these exist (create empty + a short README explaining ownership):
 
 ### 4. Generate skill seeds
 
-#### `.cursor/skills/mock-interviewer/question-bank.md`
+Seed paths below use `<skills_dir>` from config (e.g. `.cursor/skills` in Cursor, `.claude/skills` in Claude Code, `.agents/skills` in Codex).
+
+#### `<skills_dir>/mock-interviewer/question-bank.md`
 
 Use [question-bank-template.md](question-bank-template.md) as the structure. For each parsed stage, **LLM-generate 4–6 questions** drawn from:
 
@@ -102,7 +104,7 @@ If the target file already exists, ask the user before overwriting: _"Question b
 
 **After writing, print the caveat**: _"Question bank seeded from roadmap + web. Add 5-10 hand-written questions before your first mock — generated questions are weaker than ones drawn from your own production scars."_
 
-#### `.cursor/skills/source-code-reader/targets.md`
+#### `<skills_dir>/source-code-reader/targets.md`
 
 Use [source-targets-template.md](source-targets-template.md). For each parsed stage, LLM-generate 1–2 library-function targets drawn from:
 
@@ -137,8 +139,8 @@ Files written:
   learning-state/confidence-log.md    [<new | kept>]
   learning-state/README.md            [<new | overwritten>]
   learning-state/{flashcards,assessments,notes}/
-  .cursor/skills/mock-interviewer/question-bank.md   [<new | merged | skipped>]
-  .cursor/skills/source-code-reader/targets.md       [<new | merged | skipped>]
+  <skills_dir>/mock-interviewer/question-bank.md   [<new | merged | skipped>]
+  <skills_dir>/source-code-reader/targets.md       [<new | merged | skipped>]
 
 Try: `what's next` · `dashboard` · `quiz me on stage 1`
 ```

@@ -1,6 +1,6 @@
 # Learning State
 
-This folder is the **single source of truth** for where you are on the [{{domain}} roadmap]({{roadmap_file}}). The skills in `.cursor/skills/` read and write to these files. Treat them like a database — but one you can read, edit, and `git diff`.
+This folder is the **single source of truth** for where you are on the [{{domain}} roadmap]({{roadmap_file}}). The skills in `{{skills_dir}}` read and write to these files. Treat them like a database — but one you can read, edit, and `git diff`.
 
 ## Files
 

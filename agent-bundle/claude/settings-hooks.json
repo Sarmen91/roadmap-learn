@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/load-progress.mjs --agent=claude",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

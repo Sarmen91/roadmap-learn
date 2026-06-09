@@ -27,7 +27,8 @@ Read whatever exists; don't assume:
 
 - `learning-state/config.md` — if present, this repo already has a roadmap. Stop and ask: _"Found an existing config (domain: <X>). Overwrite, start fresh in a new folder, or cancel?"_
 - `*.md` at repo root matching `*-roadmap-*.md` — same logic; surface what's there.
-- `.cursor/rules/` and `.cursor/hooks/` — note whether they already contain learning-platform files (so you know whether the final copy step needs an overwrite confirmation).
+- Which agent is hosting this session (you know what you're running in: Cursor, Claude Code, Codex CLI, or other). This determines `skills_dir` (`.cursor/skills` / `.claude/skills` / `.agents/skills`) and how step 8 installs the bundle. If genuinely ambiguous, ask the user.
+- The agent's config dirs (`.cursor/rules/` + `.cursor/hooks/`, or `.claude/`, or `AGENTS.md`) — note whether they already contain learning-platform files (so you know whether the final copy step needs an overwrite confirmation).
 
 ### 2. Section A — Domain capture (fuzzy to concrete)
 
@@ -107,24 +108,38 @@ Iterate. Each revision keeps the anchor scheme intact (regenerate `<!-- ac:sN-M 
 
 Only after explicit "ship it" — and only this one state file. Full state generation is `bootstrap-state`'s job. Use the template at `../bootstrap-state/config-template.md`.
 
-Fill from the answers captured above. Include today's date as `started:`.
+Fill from the answers captured above. Include today's date as `started:`. Set `skills_dir` to the host agent's skills folder detected in step 1 (e.g. `.cursor/skills`, `.claude/skills`, `.agents/skills`) — downstream skills resolve their seed files through it.
 
-### 8. Install the Cursor bundle
+### 8. Install the agent bundle
 
-If the package was installed via the `skills` CLI, the `cursor-bundle/` folder lives next to this skill in the package source. Copy:
+The `agent-bundle/` folder lives next to this skill in the package source (one level above the skills tree). It is a single source of truth with per-agent adapters — see `agent-bundle/README.md` for the rationale. Materialize it for the **host agent detected in step 1**:
 
-- All `*.mdc` files from `cursor-bundle/rules/` → `.cursor/rules/`
-- `cursor-bundle/hooks/hooks.json` → `.cursor/hooks.json`
-- All files from `cursor-bundle/hooks/` (except `hooks.json`) → `.cursor/hooks/`
+**Cursor:**
 
-If any target already exists, ask before overwriting. If the user declines, leave their version in place and note it in the final summary.
+- All `*.mdc` files from `agent-bundle/rules/` → `.cursor/rules/`
+- `agent-bundle/cursor/hooks.json` → `.cursor/hooks.json`
+- `agent-bundle/hooks/load-progress.mjs` → `.cursor/hooks/load-progress.mjs` (deterministic alternative; `hooks.json` uses prompt hooks by default)
+
+**Claude Code:**
+
+- `agent-bundle/hooks/load-progress.mjs` → `.claude/hooks/load-progress.mjs`
+- Merge the `hooks` object from `agent-bundle/claude/settings-hooks.json` into `.claude/settings.json` (create the file if missing; preserve existing keys and hooks). Tell the user Claude Code will ask to trust the hook on first run.
+- Append a managed block to `CLAUDE.md` (create if missing) containing: the body of each `agent-bundle/rules/*.mdc` file with YAML frontmatter stripped, plus the "end of a substantive session" section of `agent-bundle/session-rituals.md` (session start is covered by the hook). Delimit the block with `<!-- roadmap-learn:start -->` / `<!-- roadmap-learn:end -->`; if the markers already exist, replace the block contents instead of appending.
+
+**Codex CLI:**
+
+- Append the same managed block to `AGENTS.md` (create if missing), containing: the frontmatter-stripped rule bodies plus **all** of `agent-bundle/session-rituals.md` (Codex hooks cannot inject model context, so both rituals are instructions). Same `<!-- roadmap-learn:start/end -->` marker handling.
+
+**Other agents:** follow the Codex path against the agent's instructions file (`AGENTS.md` is the common convention).
+
+If any target already exists outside a managed block, ask before overwriting. If the user declines, leave their version in place and note it in the final summary.
 
 ### 9. Print the hand-off
 
 ```
 Roadmap drafted: <domain_slug>-roadmap-<year>.md
 Config written:  learning-state/config.md
-Cursor bundle:   installed (rules + hooks) | skipped (user declined)
+Agent bundle:    installed for <cursor | claude | codex> (rules + hooks/rituals) | skipped (user declined)
 
 Next step: review the roadmap once more, then run `/bootstrap-state` to scaffold:
   - learning-state/progress.md

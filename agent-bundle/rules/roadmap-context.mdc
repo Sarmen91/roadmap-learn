@@ -29,5 +29,5 @@ Use these for all lookups. Line numbers are not stable across roadmap edits.
 
 ## When this rule does not apply
 
-- Pure non-roadmap questions (general Cursor questions, unrelated code, etc.)
+- Pure non-roadmap questions (general editor/agent questions, unrelated code, etc.)
 - When the user explicitly says "ignore roadmap" for this turn.
